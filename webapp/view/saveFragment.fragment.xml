@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+ xmlns="sap.m" xmlns:sf="sap.ui.layout.form" xmlns:ui="sap.ui.unified" 
+ xmlns:core="sap.ui.core">
+<Dialog title="Add a File" busy="{validation>/busyIndicator}" >
+
+<sf:SimpleForm editable="true"  >
+				<Label text="FileName"></Label>
+				<Input value="{addNew>/Filename}" valueStateText="{validation>/fileNameText}"
+				 liveChange="inputValidation" valueState="{validation>/fileName}"
+				  required="true"></Input>
+
+                <Label text="Link"></Label>
+				<Input value="{addNew>/Link}" liveChange="inputValidation"
+				 valueStateText="{validation>/linkText}"
+				 valueState="{validation>/link}" required="true"></Input>
+
+                <Label text="Category"></Label>
+					<Select  valueStateText="{validation>/categoryText}"
+					 valueState="{validation>/category}" 
+					change="fieldSelected"
+				items="{
+					path: 'categories>/Categories',
+					sorter: { path: 'categories>Category' }
+				}">
+				<core:Item key="{Category}" text="{categories>Category}" />
+			</Select>
+			
+
+                <Label text="Description"></Label>
+				<Input value="{addNew>/Description}" valueStateText="{validation>/descriptionText}"
+				 valueState="{validation>/description}" liveChange="inputValidation" required="true"></Input>
+
+                <Label text="Passowrd"></Label>
+				<Input required="true" valueStateText="{validation>/passwordText}"
+				 valueState="{validation>/password}" liveChange="inputValidation"
+				 value="{addNew>/Password}" type="Password"></Input>
+				<Label ></Label>
+				<Button text="Save" type="Emphasized" press="saveData"></Button>
+                <Button text="Cancel" type="Reject" press="onCloseFrag"></Button>
+			</sf:SimpleForm>
+           
+	  </Dialog> 
+</core:FragmentDefinition>

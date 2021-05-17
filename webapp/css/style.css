@@ -1,0 +1,58 @@
+/* Enter your custom styles here */
+
+.view1{
+    background-image: url("http://www.signiwis.com/images/slider/1.jpg") !important;
+    
+    background-repeat: no-repeat !important;
+    background-size: cover  !important;
+    background-position: center;
+}
+.sapMGT  {
+         text-align: center !important;
+        background-color: rgba(255, 255,255,0.7) !important;
+        -webkit-box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.3) !important;
+        -webkit-border-top-left-radius: 2em !important; 
+        -webkit-border-bottom-right-radius: 2em !important; 
+        border-top-left-radius: 2em !important;
+        border-bottom-right-radius: 2em !important;
+       
+    
+    
+}
+
+.sapMGTSubHdrTxt>.sapMText, .sapMGTSubHdrTxt{
+    color:#980000 !important;
+    font-weight:bold !important;
+    font-size: 25px !important;
+    white-space: break-spaces !important;
+   
+  
+}
+
+.tbg{
+    color:#980000 !important;
+    font-weight:bold !important;
+    font-size: 45px !important;
+    white-space: break-spaces !important;
+}
+
+.transparentTable .sapUiTableCellDummy {
+    background-color: rgba(255, 255,255,0.5) !important;
+  }
+  
+  .transparentTable .sapUiTableContentRow {
+    background-color: rgba(255, 255,255,0.5) !important;
+  }
+  
+  .transparentTable .sapUiTableCnt {
+    background-color: rgba(255, 255,255,0.5) !important;
+  }
+  
+  .transparentTable .sapUiTableHeaderRow {
+    background-color: rgba(255, 255,255,0.5) !important;
+  }
+  
+  .transparentTable .sapUiTableColHdrCnt {
+    background-color: rgba(255, 255,255,0.5) !important;
+    color: green
+  }

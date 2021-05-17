@@ -1,0 +1,84 @@
+<mvc:View xmlns:calendar="sap.ui.unified.calendar"
+    controllerName="wiki.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tab="sap.ui.table"
+    displayBlock="true"
+    xmlns="sap.m"
+		xmlns:tnt="sap.tnt"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+
+		<App id="app2">
+			<pages>
+				<Page class="view1" id="page2" title="{i18n>title}"
+				 navButtonPress="onBack" showHeader="false" backgroundDesign="Transparent"
+				  titleLevel="H2" showNavButton="true">
+					<content >
+				
+
+				<tnt:ToolHeader  >
+				
+						<Bar>
+			             <contentLeft>
+								<Button icon="sap-icon://nav-back" press="onBack"></Button>
+							</contentLeft>
+							<contentMiddle>
+								<Title text="{i18n>title}" titleStyle="H1"/>
+							</contentMiddle>
+							
+						</Bar>
+					</tnt:ToolHeader>
+					<HBox justifyContent="Center" alignItems="Center">
+				       <TileContent  class="sapUiSmallMargin">
+							<Title text="" id="cat" class="tbg" level="H1" />
+						</TileContent>
+					</HBox>
+	
+
+
+
+				<tab:Table rowHeight="35%" busy="true" busyIndicatorSize="Medium"
+				          class="transparentTable"
+						 rows="{File>/CategoryList}" selectionMode="None" 
+						  id="catData" >
+						
+						<tab:extension>
+
+						<OverflowToolbar style="Clear">
+						
+							<SearchField
+							placeholder="Search Keyword" 
+							search="searchData"
+							width="77rem"/>
+							<ToolbarSpacer/>
+							<Button text="Search"
+							type="Emphasized"
+						
+							press="searchData"/>
+						</OverflowToolbar>
+							<ToolbarSeparator/>
+					</tab:extension>
+				<tab:columns>
+
+						<tab:Column >
+						<tab:label><Label text="Name"></Label></tab:label>
+						<tab:template><Link href="{File>Link}" target="_blank" text="{File>Name}"></Link></tab:template>
+						</tab:Column>
+
+
+                        <tab:Column >
+						<tab:label><Label text="Description"></Label></tab:label>
+						<tab:template><Label text="{File>Description}"></Label></tab:template>
+						</tab:Column>
+
+						
+				</tab:columns>
+			</tab:Table>
+					
+					</content>
+				</Page>
+			</pages>
+		</App>
+
+</mvc:View>

@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="wiki.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+		xmlns:tnt="sap.tnt"
+		xmlns:l="sap.ui.layout"
+>
+
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}" class="view1" 
+				showHeader="false" backgroundDesign="Transparent"
+				>
+					<content >
+					<tnt:ToolHeader  >
+				
+						<Bar>
+			
+							<contentMiddle>
+								<Title text="{i18n>title}" titleStyle="H1"/>
+							</contentMiddle>
+							
+						</Bar>
+					</tnt:ToolHeader>
+				<ToolbarSeparator/>
+				<ToolbarSeparator/>
+						<l:VerticalLayout 
+				width="100%"
+				class="gridWrapper">
+			<l:Grid  id="gridId" position="Center" width="80%" vSpacing="2"
+					containerQuery="true"
+					defaultSpan="XL2 L4" busyIndicatorSize="Large"   busy="true" >
+
+					
+	</l:Grid>
+		</l:VerticalLayout>
+					</content>
+					<footer>
+					<OverflowToolbar>
+					<ToolbarSpacer/>
+					
+					<Button text="UPLOAD" type="Emphasized" press="popUp">
+					</Button>
+					</OverflowToolbar>
+					
+					</footer>
+				</Page>
+			</pages>
+		</App>
+
+</mvc:View>

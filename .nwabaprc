@@ -1,0 +1,11 @@
+{
+    "base": "./dist",
+    "conn_usestrictssl" : false,
+    "conn_server": "http://183.82.98.9:8057//", 
+    "conn_client" : "400", 
+    "conn_user": "hanauser2", 
+    "conn_password": "1234567",
+    "abap_package": "$TMP",
+    "abap_bsp": "ZSigniwisWiki", 
+    "abap_bsp_text": "Signiwis Wiki Application"
+}
