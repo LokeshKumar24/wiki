@@ -22,7 +22,7 @@
 					path: 'categories>/Categories',
 					sorter: { path: 'categories>Category' }
 				}">
-				<core:Item key="{Category}" text="{categories>Category}" />
+				<core:Item key="{categories>Category}" text="{categories>Category}" />
 			</Select>
 			
 

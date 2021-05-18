@@ -29,35 +29,32 @@
 							
 						</Bar>
 					</tnt:ToolHeader>
-					<HBox justifyContent="Center" alignItems="Center">
-				       <TileContent  class="sapUiSmallMargin">
-							<Title text="" id="cat" class="tbg" level="H1" />
-						</TileContent>
-					</HBox>
-	
+					
+					
 
 
 
 				<tab:Table rowHeight="35%" busy="true" busyIndicatorSize="Medium"
-				          class="transparentTable"
+				          class="transparentTable" 	
 						 rows="{File>/CategoryList}" selectionMode="None" 
 						  id="catData" >
 						
 						<tab:extension>
-
-						<OverflowToolbar style="Clear">
+						<!-- <core:Icon src="sap-icon://sap-ui5"  alt="SAP" size="1.25rem"></core:Icon> -->
 						
-							<SearchField  id="searchData"
+						<OverflowToolbar style="Clear">
+							
+						<Title text="" id="cat" class="tbg" level="H3" />
+							<ToolbarSpacer/>
+							<SearchField   class="transparentTable"
 							placeholder="Search Keyword" 
 							search="searchData"
-							width="77rem"/>
-							<!-- <ToolbarSpacer/> -->
-							<Button text="Search"
-							type="Emphasized"
-						
-							press="searchData"/>
+								width="15rem"/>
+							
 						</OverflowToolbar>
-							<ToolbarSeparator/>
+							
+
+							
 					</tab:extension>
 				<tab:columns>
 

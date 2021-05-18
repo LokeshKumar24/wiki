@@ -17,6 +17,7 @@ sap.ui.define([
 
 				this.oRouter.attachRoutePatternMatched(this.openSelected, this);
 			},
+			rowCount:null,
 			openSelected:function(oEvent){
 			//	debugger;
 				var category = oEvent.getParameter("arguments").Id
@@ -28,19 +29,19 @@ sap.ui.define([
 			},
 			searchData:function(oEvent){
 				debugger
-// build filter array
-var aFilter = [];
-var sQuery = oEvent.getParameter("query");
-if (!sQuery) {
-	sQuery=this.getView().byId("searchData").getValue();
-} 
-aFilter.push(new Filter("Name", FilterOperator.Contains, sQuery));
-aFilter.push(new Filter("Description", FilterOperator.Contains, sQuery));
+				// build filter array
+				var aFilter = [];
+				var sQuery = oEvent.getParameter("query");
+				if (sQuery) {
+					
+					aFilter.push(new Filter("Name", FilterOperator.Contains, sQuery));
+					aFilter.push(new Filter("Description", FilterOperator.Contains, sQuery));
+				} 
 
-// filter binding
-var oList = this.byId("catData");
-var oBinding = oList.getBinding("rows");
-oBinding.filter(aFilter);
+				// filter binding
+				var oList = this.byId("catData");
+				var oBinding = oList.getBinding("rows");
+				oBinding.filter(aFilter);
 			},
 			oRouter:null,
 			onBack:function(){
@@ -56,25 +57,27 @@ oBinding.filter(aFilter);
              var oModel =  new sap.ui.model.odata.ODataModel(serviceurl);
 				oModel.read("/Z_C_SIGNIWISWIKI",{
 					success:function(oData){
-						debugger
-						console.log(oData.results);
+					//	debugger
+					//	console.log(oData.results);
 						that.specificCategory(oData.results,category)
 	
 			
 			},
 					error:function(error){
-						debugger;
-						console.log(error)
+					//	debugger;
+					//	console.log(error)
 					},
 					
 				})	
 
 			},
 			specificCategory:function(data,category){
-				debugger
+				//debugger
 				var catData=[];
 				catData = data.filter(element=>{return element.Category===category})
 				this.getOwnerComponent().setModel(new JSONModel({CategoryList:catData}),"File");
+				this.rowCount=catData.length;
+				this.getView().byId("catData").setVisibleRowCount(this.rowCount);
 				this.getView().byId("catData").setBusy(false)
 			}
 		

@@ -35,7 +35,11 @@
     font-size: 45px !important;
     white-space: break-spaces !important;
 }
-
+.sapMFlexBox{
+  width: 100% !important;
+  margin-left: 1% !important;
+ 
+}
 .transparentTable .sapUiTableCellDummy {
     background-color: rgba(255, 255,255,0.5) !important;
   }

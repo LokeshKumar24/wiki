@@ -25,16 +25,18 @@
 					</tnt:ToolHeader>
 				<ToolbarSeparator/>
 				<ToolbarSeparator/>
+				<HBox  justifyContent="Center" alignItems="Center">
 						<l:VerticalLayout 
 				width="100%"
 				class="gridWrapper">
-			<l:Grid  id="gridId" position="Center" width="80%" vSpacing="2"
-					containerQuery="true"
-					defaultSpan="XL2 L4" busyIndicatorSize="Large"   busy="true" >
+			<l:Grid  id="gridId" position="Center" width="100%" vSpacing="2"
+					containerQuery="true" hSpacing="2" 
+					defaultSpan="XL2 L3" busyIndicatorSize="Large"   busy="true" >
 
 					
 	</l:Grid>
 		</l:VerticalLayout>
+		</HBox>
 					</content>
 					<footer>
 					<OverflowToolbar>

@@ -21,21 +21,21 @@ sap.ui.define([
 			addTiles:function(){
 				//debugger;
 				var grid=this.getView().byId("gridId");
-				grid.setBusy(false);
-			this.arrayCat=	this.getOwnerComponent().getModel("categories").getProperty("/Categories");
+				this.arrayCat=	this.getOwnerComponent().getModel("categories").getProperty("/Categories");
 				
 				this.arrayCat.forEach((element)=>{
 					//debugger
-                  let genericTile= new sap.m.GenericTile({
+					let genericTile= new sap.m.GenericTile({
 						subheader:element.Category,
 						press:this.topicSelected.bind(this),
-				
-					   });
-					   //add generic tile 
-					  grid.addContent(genericTile);
-
+						
+					});
+					//add generic tile 
+					grid.addContent(genericTile);
+					
 				});
-
+				
+				grid.setBusy(false);
 			},
 			frag:null,
 			popUp:function(){
@@ -111,7 +111,7 @@ else{
 					Link :link,
 					Password : password
 			}
-			this.getView().setBusy(true);
+		      	this.getView().setBusy(true);
 					this.createDataObject(payload)
 
 		this.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel(),"addNew");
@@ -142,7 +142,7 @@ else{
 					method:"POST",
 					success:function(oResponse){
 						//debugger
-						console.log(oResponse);
+					//	console.log(oResponse);
 						sap.m.MessageToast.show("Successfully Created");
 						that.onCloseFrag();	
 						that.getView().setBusy(false);
@@ -153,7 +153,7 @@ else{
 			},
 					error:function(error){
 						//debugger;
-						console.log(error)
+						//console.log(error)
 						that.passwordWrong();
 						that.getView().setBusy(false);
 					// 	setTimeout(function(){ 
@@ -179,14 +179,14 @@ else{
 				oModel.read("/categorySet",{
 					success:function(oData){
 						//debugger
-						console.log(oData.results);
+						//console.log(oData.results);
 				that.getOwnerComponent().setModel(new JSONModel({Categories:oData.results}),"categories")
 				
 				that.addTiles();	
 			},
 					error:function(error){
-						debugger;
-						console.log(error);
+						//debugger;
+					//	console.log(error);
 						
 	
 					},
