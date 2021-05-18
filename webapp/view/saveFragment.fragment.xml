@@ -16,7 +16,7 @@
 
                 <Label text="Category"></Label>
 					<Select  valueStateText="{validation>/categoryText}"
-					 valueState="{validation>/category}" 
+					 valueState="{validation>/category}" id="searchField"
 					change="fieldSelected"
 				items="{
 					path: 'categories>/Categories',

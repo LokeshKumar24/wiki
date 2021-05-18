@@ -1,11 +1,12 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/Fragment"
 ],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (Controller,JSONModel) {
+	function (Controller,JSONModel,Fragment) {
 		"use strict";
 
 		return Controller.extend("wiki.controller.View1", {
@@ -40,13 +41,14 @@ sap.ui.define([
 			frag:null,
 			popUp:function(){
 				if(!this.frag){
-					this.frag = new sap.ui.xmlfragment("wiki.view.saveFragment",this);
+					this.frag = new sap.ui.xmlfragment(this.createId("saveFrag"),"wiki.view.saveFragment",this);
                     this.getView().addDependent(this.frag);
                 }
                 this.frag.open();
 			},
 			onCloseFrag:function(){
 				this.frag.close();
+				this.inputValidation();
 		this.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel(),"addNew");
 			},
 			oRouter:null,
@@ -59,14 +61,15 @@ sap.ui.define([
 			category:null,
 			fieldSelected:function(oEvent){
 				debugger;
-				this.category=oEvent.getParameters("selectedItem").selectedItem.mProperties.text;
+				//this.category=oEvent.getParameters("selectedItem").selectedItem.mProperties.text;
 				this.getOwnerComponent().getModel("validation").setProperty("/category","None");
 			},
 			saveData:function(){
-				//debugger;
+				debugger;
 			
 				var fileName=this.getOwnerComponent().getModel("addNew").getProperty("/Filename");
 				var link=this.getOwnerComponent().getModel("addNew").getProperty("/Link");
+				var category=Fragment.byId(this.createId("saveFrag"),"searchField").getSelectedKey();
 				var description=this.getOwnerComponent().getModel("addNew").getProperty("/Description")
 				var password=this.getOwnerComponent().getModel("addNew").getProperty("/Password");
 			
@@ -79,7 +82,7 @@ sap.ui.define([
 				this.getOwnerComponent().getModel("validation").setProperty("/linkText","Please Enter Link");
 		
 		 }  
-		 else if(this.category==undefined || this.category==null ){
+		 else if(category==undefined ){
 			this.getOwnerComponent().getModel("validation").setProperty("/category","Error");
 			this.getOwnerComponent().getModel("validation").setProperty("/categoryText","Please select category");
 	 }
@@ -93,35 +96,23 @@ sap.ui.define([
 }
 		
 else{
-				//debugger
-				
-
-				this.getOwnerComponent().getModel("validation").setProperty("/fileName","None");
-				this.getOwnerComponent().getModel("validation").setProperty("/link","None");
-				this.getOwnerComponent().getModel("validation").setProperty("/description","None");
-				this.getOwnerComponent().getModel("validation").setProperty("/category","None");
-				this.getOwnerComponent().getModel("validation").setProperty("/password","None");
-				
-	//this.getOwnerComponent().getModel("validation").setProperty("/busyIndicator",true);
+			
 			
 				var payload={
 					Name : fileName ,
 					Description :description ,
-					Category : this.category,
+					Category : category,
 					Link :link,
 					Password : password
-			}
+					}
 		      	this.getView().setBusy(true);
-					this.createDataObject(payload)
+				this.createDataObject(payload)
 
-		this.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel(),"addNew");
-				
-			
-				
+					
 			}
-			},
+	},
 			
-			inputValidation:function(oEvent){
+			inputValidation:function(){
                //  debugger;
 
 				 this.getOwnerComponent().getModel("validation").setProperty("/fileName","None");
@@ -131,8 +122,7 @@ else{
 			},
 			createDataObject:function(payload){
 
-				//this.getOwnerComponent().getModel("validation").setProperty("/busy",true);
-			//	debugger;
+				
 				var that=this;
 			
 				var serviceurl="/sap/opu/odata/sap/ZSIGNIWISWIKIPEDIA_SRV/";
@@ -155,6 +145,7 @@ else{
 						//debugger;
 						//console.log(error)
 						that.passwordWrong();
+						
 						that.getView().setBusy(false);
 					// 	setTimeout(function(){ 
 					// 		that.getOwnerComponent().getModel("validation").setProperty("/busyIndicator",false);			
