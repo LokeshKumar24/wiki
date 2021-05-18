@@ -31,10 +31,11 @@ sap.ui.define([
 // build filter array
 var aFilter = [];
 var sQuery = oEvent.getParameter("query");
-if (sQuery) {
-	aFilter.push(new Filter("Name", FilterOperator.Contains, sQuery));
-	aFilter.push(new Filter("Description", FilterOperator.Contains, sQuery));
-}
+if (!sQuery) {
+	sQuery=this.getView().byId("searchData").getValue();
+} 
+aFilter.push(new Filter("Name", FilterOperator.Contains, sQuery));
+aFilter.push(new Filter("Description", FilterOperator.Contains, sQuery));
 
 // filter binding
 var oList = this.byId("catData");

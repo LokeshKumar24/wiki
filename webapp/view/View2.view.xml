@@ -47,11 +47,11 @@
 
 						<OverflowToolbar style="Clear">
 						
-							<SearchField
+							<SearchField  id="searchData"
 							placeholder="Search Keyword" 
 							search="searchData"
 							width="77rem"/>
-							<ToolbarSpacer/>
+							<!-- <ToolbarSpacer/> -->
 							<Button text="Search"
 							type="Emphasized"
 						
