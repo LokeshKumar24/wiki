@@ -58,8 +58,8 @@ sap.ui.define([
 			},
 			category:null,
 			fieldSelected:function(oEvent){
-				//debugger;
-				this.category=oEvent.getParameters().newValue;
+				debugger;
+				this.category=oEvent.getParameters("selectedItem").selectedItem.mProperties.text;
 				this.getOwnerComponent().getModel("validation").setProperty("/category","None");
 			},
 			saveData:function(){
