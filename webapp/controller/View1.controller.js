@@ -29,7 +29,7 @@ sap.ui.define([
                    
 					select:this.onTabBarSelect.bind(this)
 				});
-				var tileArray=["DOCUMENTS","VIDEO'S","INTERVIEW QUESTIONS"]
+				var tileArray=["DOCUMENTS","VIDEOS","INTERVIEW QUESTIONS","BLOGS"]
 				
 				var genericTileArray=[]
 				tileArray.forEach(element=>{
