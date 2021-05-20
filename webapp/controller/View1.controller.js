@@ -25,8 +25,9 @@ sap.ui.define([
 				this.arrayCat=	this.getOwnerComponent().getModel("categories").getProperty("/Categories");
 				
 				var IconTabBar= new sap.m.IconTabBar({
-					expandable:false
-					//select:this.itemSelected.bind(this)
+                    expandable:false,
+                   
+					select:this.onTabBarSelect.bind(this)
 				});
 				var tileArray=["DOCUMENTS","VIDEO'S","INTERVIEW QUESTIONS"]
 				
@@ -204,7 +205,12 @@ else{
 			passwordWrong:function(){
 				sap.m.MessageToast.show("Authentication Failed");
 				
-			},
+            },
+            onTabBarSelect:function(oEvent){
+                oEvent.getSource().setExpanded(false);
+                oEvent.getSource().setExpanded(true);
+                // debugger;
+            },
 
 			setCategoryModel:function(){
 				var that=this;
