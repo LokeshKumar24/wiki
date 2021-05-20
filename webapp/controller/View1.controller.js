@@ -21,22 +21,55 @@ sap.ui.define([
 			arrayCat:null,
 			addTiles:function(){
 				//debugger;
-				var grid=this.getView().byId("gridId");
+				var grid=this.getView().byId("page");
 				this.arrayCat=	this.getOwnerComponent().getModel("categories").getProperty("/Categories");
 				
-				this.arrayCat.forEach((element)=>{
-					//debugger
-					let genericTile= new sap.m.GenericTile({
-						subheader:element.Category,
-						press:this.topicSelected.bind(this),
+				var IconTabBar= new sap.m.IconTabBar({
+					expandable:false
+					//select:this.itemSelected.bind(this)
+				});
+				var tileArray=["DOCUMENTS","VIDEO'S","INTERVIEW QUESTIONS"]
+				
+				var genericTileArray=[]
+				tileArray.forEach(element=>{
+					
+					var genericTile= new sap.m.GenericTile({
+						subheader:element,
+						press:this.topicSelected.bind(this)
 						
 					});
-					//add generic tile 
-					grid.addContent(genericTile);
-					
+					genericTileArray.push(genericTile);
 				});
 				
+				//add generic tile 
+				this.arrayCat.forEach((element)=>{	
+					//debugger
+					let IconTabFilter= new sap.m.IconTabFilter({
+						text:element.Category,
+						key:element.Category
+					});
+
+					tileArray.forEach(element=>{
+					
+						var genericTile= new sap.m.GenericTile({
+							subheader:element,
+							press:this.topicSelected.bind(this)
+							
+						});
+						IconTabFilter.addContent(genericTile);
+					});
+					
+					IconTabBar.addItem(IconTabFilter);
+					
+				});
+				//grid.addItems(IconTabBar);
+				grid.addContent(IconTabBar);
 				grid.setBusy(false);
+			},
+			key:null,
+			itemSelected:function(oEvent){
+				debugger;
+			 this.key=oEvent.getParameter("key")
 			},
 			frag:null,
 			popUp:function(){
@@ -54,9 +87,13 @@ sap.ui.define([
 			oRouter:null,
 			topicSelected:function(oEvent){
 				//debugger
-				var id=oEvent.getSource().mProperties.subheader;
+				var key  =oEvent.getSource().oParent.mProperties.text;
+				var filter=oEvent.getSource().mProperties.subheader;
 				this.oRouter =  sap.ui.core.UIComponent.getRouterFor(this);
-				this.oRouter.navTo("RouteView2",{Id:id});
+				this.oRouter.navTo("RouteView2",{
+					Id:key,
+					filter:filter
+					});
 			},
 			category:null,
 			fieldSelected:function(oEvent){
@@ -70,6 +107,7 @@ sap.ui.define([
 				var fileName=this.getOwnerComponent().getModel("addNew").getProperty("/Filename");
 				var link=this.getOwnerComponent().getModel("addNew").getProperty("/Link");
 				var category=Fragment.byId(this.createId("saveFrag"),"searchField").getSelectedKey();
+				var type=Fragment.byId(this.createId("saveFrag"),"typeField").getSelectedKey();
 				var description=this.getOwnerComponent().getModel("addNew").getProperty("/Description")
 				var password=this.getOwnerComponent().getModel("addNew").getProperty("/Password");
 			
@@ -86,6 +124,10 @@ sap.ui.define([
 			this.getOwnerComponent().getModel("validation").setProperty("/category","Error");
 			this.getOwnerComponent().getModel("validation").setProperty("/categoryText","Please select category");
 	 }
+	 else if(type==undefined ){
+		this.getOwnerComponent().getModel("validation").setProperty("/type","Error");
+		this.getOwnerComponent().getModel("validation").setProperty("/typeText","Please select type");
+ }
 		  else if(description==undefined ){
 			this.getOwnerComponent().getModel("validation").setProperty("/description","Error");
 			this.getOwnerComponent().getModel("validation").setProperty("/descriptionText","Please Enter Description");
@@ -102,6 +144,7 @@ else{
 					Name : fileName ,
 					Description :description ,
 					Category : category,
+					Type:type,
 					Link :link,
 					Password : password
 					}
@@ -119,6 +162,8 @@ else{
 				this.getOwnerComponent().getModel("validation").setProperty("/link","None");
 				this.getOwnerComponent().getModel("validation").setProperty("/description","None");
 				this.getOwnerComponent().getModel("validation").setProperty("/password","None");
+				this.getOwnerComponent().getModel("validation").setProperty("/category","None");
+				this.getOwnerComponent().getModel("validation").setProperty("/type","None");
 			},
 			createDataObject:function(payload){
 

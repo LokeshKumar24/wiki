@@ -24,6 +24,18 @@
 				}">
 				<core:Item key="{categories>Category}" text="{categories>Category}" />
 			</Select>
+
+
+			 <Label text="Type"></Label>
+					<Select  valueStateText="{validation>/categoryText}"
+					 valueState="{validation>/type}"  id="typeField"
+					change="fieldSelectedType"
+				items="{
+					path: 'types>/type',
+					sorter: { path: 'types>name' }
+				}">
+				<core:Item key="{types>name}" text="{types>name}" />
+			</Select>
 			
 
                 <Label text="Description"></Label>

@@ -21,6 +21,7 @@
                 <Property Name="Category" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
                 <Property Name="Link" Type="Edm.String"/>
                 <Property Name="Password" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
             </EntityType>
             <EntityContainer Name="ZSIGNIWISWIKIPEDIA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="categorySet" EntityType="ZSIGNIWISWIKIPEDIA_SRV.category" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>

@@ -20,18 +20,20 @@ sap.ui.define([
 			rowCount:null,
 			openSelected:function(oEvent){
 			//	debugger;
-				var category = oEvent.getParameter("arguments").Id
-			if(category){
+				var category = oEvent.getParameter("arguments").Id;
+				var filter=  oEvent.getParameter("arguments").filter
+			if(category&&filter){
 				this.getView().byId("cat").setText(category)
-				this.getData(category)
+				this.getData(category,filter)
 				
 			}
 			},
 			searchData:function(oEvent){
 				debugger
 				// build filter array
-				var aFilter = [];
+				
 				var sQuery = oEvent.getParameter("query");
+				var aFilter = [];
 				if (sQuery) {
 					
 					aFilter.push(new Filter("Name", FilterOperator.Contains, sQuery));
@@ -42,6 +44,10 @@ sap.ui.define([
 				var oList = this.byId("catData");
 				var oBinding = oList.getBinding("rows");
 				oBinding.filter(aFilter);
+				
+			},
+			filterTable:function(sQuery){
+				
 			},
 			oRouter:null,
 			onBack:function(){
@@ -49,7 +55,7 @@ sap.ui.define([
 				this.oRouter.navTo("RouteView1");
 				this.getView().byId("catData").setBusy(true)
 			},
-			getData:function(category){
+			getData:function(category,filter){
 				var that=this;
 			
 				var serviceurl="/sap/opu/odata/sap/ZSIGNIWISWIKIPEDIA_SRV/";
@@ -72,10 +78,11 @@ sap.ui.define([
 
 			},
 			specificCategory:function(data,category){
-				//debugger
+				debugger
 				var catData=[];
 				catData = data.filter(element=>{return element.Category===category})
 				this.getOwnerComponent().setModel(new JSONModel({CategoryList:catData}),"File");
+			
 				this.rowCount=catData.length;
 				this.getView().byId("catData").setVisibleRowCount(this.rowCount);
 				this.getView().byId("catData").setBusy(false)

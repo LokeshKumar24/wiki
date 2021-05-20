@@ -7,6 +7,7 @@
     background-size: cover  !important;
     background-position: center;
 }
+
 .sapMGT  {
          text-align: center !important;
         background-color: rgba(255, 255,255,0.7) !important;
@@ -40,6 +41,14 @@
   margin-left: 1% !important;
  
 }
+.sapMITB .sapMITBBackgroundDesignSolid{
+background-color: blueviolet !important;
+}
+
+ /*tiles  */
+.sapMGT.OneByOne{
+margin: 5% !important;
+}
 .transparentTable .sapUiTableCellDummy {
     background-color: rgba(255, 255,255,0.5) !important;
   }
@@ -50,6 +59,11 @@
   
   .transparentTable .sapUiTableCnt {
     background-color: rgba(255, 255,255,0.5) !important;
+    margin-right: 0.2%;
+  
+  }
+  .sapUiTable{
+    margin: 2%;
   }
   
   .transparentTable .sapUiTableHeaderRow {

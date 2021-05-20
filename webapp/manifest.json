@@ -70,9 +70,20 @@
                 "preload": true,
                 "dataSource": "ZSIGNIWISWIKIPEDIA_SRV"
             },
-            "validation":{
+            "validation": {
                 "uri": "model/data.json",
                 "type": "sap.ui.model.json.JSONModel"
+            },
+            "types": {
+                "uri": "model/type.json",
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "ZSIGNIWISWIKIPEDIA_SRV": {
+                "dataSource": "ZSIGNIWISWIKIPEDIA_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
             }
         },
         "resources": {
@@ -102,7 +113,7 @@
                 },
                 {
                     "name": "RouteView2",
-                    "pattern": "RouteView2/{Id}",
+                    "pattern": "RouteView2/{Id}/{filter}",
                     "target": [
                         "TargetView2"
                     ]
