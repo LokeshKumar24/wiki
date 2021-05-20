@@ -23,8 +23,8 @@
 							
 						</Bar>
 					</tnt:ToolHeader>
-				<ToolbarSeparator/>
-				<ToolbarSeparator/>
+			
+				
 				<HBox  justifyContent="Center" alignItems="Center" >
 						<!-- <l:VerticalLayout 
 				width="100%"
