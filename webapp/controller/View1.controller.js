@@ -29,7 +29,7 @@ sap.ui.define([
                    
 					select:this.onTabBarSelect.bind(this)
 				});
-				var tileArray=["DOCUMENTS","VIDEO'S","INTERVIEW QUESTIONS"]
+				var tileArray=["DOCUMENTS","VIDEOS","INTERVIEW QUESTIONS"]
 				
 				var genericTileArray=[]
 				tileArray.forEach(element=>{
@@ -67,11 +67,7 @@ sap.ui.define([
 				grid.addContent(IconTabBar);
 				grid.setBusy(false);
 			},
-			key:null,
-			itemSelected:function(oEvent){
-				debugger;
-			 this.key=oEvent.getParameter("key")
-			},
+			
 			frag:null,
 			popUp:function(){
 				if(!this.frag){
@@ -96,12 +92,7 @@ sap.ui.define([
 					filter:filter
 					});
 			},
-			category:null,
-			fieldSelected:function(oEvent){
-				debugger;
-				//this.category=oEvent.getParameters("selectedItem").selectedItem.mProperties.text;
-				this.getOwnerComponent().getModel("validation").setProperty("/category","None");
-			},
+		
 			saveData:function(){
 				debugger;
 			
@@ -180,11 +171,10 @@ else{
 						//debugger
 					//	console.log(oResponse);
 						sap.m.MessageToast.show("Successfully Created");
+						that.setCategoryModel();
 						that.onCloseFrag();	
 						that.getView().setBusy(false);
-						// setTimeout(function(){
-						// 	that.getOwnerComponent().getModel("validation").setProperty("/busyIndicator",false);	
-						// 	 }, 3000);
+						
 						
 			},
 					error:function(error){
@@ -193,9 +183,6 @@ else{
 						that.passwordWrong();
 						
 						that.getView().setBusy(false);
-					// 	setTimeout(function(){ 
-					// 		that.getOwnerComponent().getModel("validation").setProperty("/busyIndicator",false);			
-					//  }, 3000);
 				
 						
 					},
@@ -221,7 +208,7 @@ else{
 				oModel.read("/categorySet",{
 					success:function(oData){
 						//debugger
-						//console.log(oData.results);
+						console.log(oData.results);
 				that.getOwnerComponent().setModel(new JSONModel({Categories:oData.results}),"categories")
 				
 				that.addTiles();	

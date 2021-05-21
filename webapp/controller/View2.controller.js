@@ -61,26 +61,27 @@ sap.ui.define([
 				var serviceurl="/sap/opu/odata/sap/ZSIGNIWISWIKIPEDIA_SRV/";
 
              var oModel =  new sap.ui.model.odata.ODataModel(serviceurl);
-				oModel.read("/Z_C_SIGNIWISWIKI",{
+				oModel.read("/Z_C_SIGNIWISWIKI?$filter=Category eq '"+category+"' and Type eq '"+filter+"'",{
 					success:function(oData){
-					//	debugger
-					//	console.log(oData.results);
-						that.specificCategory(oData.results,category)
+						debugger
+						console.log(oData.results);
+						that.specificCategory(oData.results)
 	
 			
 			},
 					error:function(error){
-					//	debugger;
-					//	console.log(error)
+						debugger;
+						console.log(error)
 					},
 					
 				})	
 
 			},
-			specificCategory:function(data,category){
+			specificCategory:function(data){
 				debugger
 				var catData=[];
-				catData = data.filter(element=>{return element.Category===category})
+				catData=data;
+				//catData = data.filter(element=>{return element.Category===category})
 				this.getOwnerComponent().setModel(new JSONModel({CategoryList:catData}),"File");
 			
 				this.rowCount=catData.length;

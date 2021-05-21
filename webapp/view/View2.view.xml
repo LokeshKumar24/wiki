@@ -69,10 +69,10 @@
 						<tab:template><Label text="{File>Description}"></Label></tab:template>
 						</tab:Column>
 
-						<tab:Column >
+						<!-- <tab:Column >
 						<tab:label><Label text="Type"></Label></tab:label>
 						<tab:template><Label text="{File>Type}"></Label></tab:template>
-						</tab:Column>
+						</tab:Column> -->
 
 						
 				</tab:columns>

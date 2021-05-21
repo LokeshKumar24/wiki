@@ -47,9 +47,15 @@
 				 valueState="{validation>/password}" liveChange="inputValidation"
 				 value="{addNew>/Password}" type="Password"></Input>
 				<Label ></Label>
-				<Button text="Save" type="Emphasized" press="saveData"></Button>
-                <Button text="Cancel" type="Reject" press="onCloseFrag"></Button>
 			</sf:SimpleForm>
+			<beginButton>
+				<Button text="Save" type="Emphasized" press="saveData"></Button>
+			
+			</beginButton>
+			<endButton>
+                <Button text="Cancel" type="Reject" press="onCloseFrag"></Button>
+			
+			</endButton>
            
 	  </Dialog> 
 </core:FragmentDefinition>

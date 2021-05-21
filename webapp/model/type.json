@@ -1,13 +1,13 @@
 {
     "type":[
         {
-            "name":"documents"
+            "name":"DOCUMENTS"
         },
         {
-            "name":"Video"
+            "name":"VIDEOS"
         },
         {
-            "name":"Interview Questions"
+            "name":"INTERVIEW QUESTIONS"
         }
     ]
 }
