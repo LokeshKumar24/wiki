@@ -34,9 +34,10 @@
 
 
 
-				<tab:Table rowHeight="35%" busy="true" busyIndicatorSize="Medium"
+				<tab:Table rowHeight="35%" busy="true" busyIndicatorSize="Medium" 
+				selectionMode="Single" selectionBehavior="Row"
 				          class="transparentTable" 	
-						 rows="{File>/CategoryList}" selectionMode="None" 
+						 rows="{File>/CategoryList}" rowSelectionChange="selectedRecord"
 						  id="catData" >
 						
 						<tab:extension>
@@ -46,6 +47,8 @@
 							
 						<Title text="" id="cat" class="tbg" level="H3" />
 							<ToolbarSpacer/>
+							<!-- <Button type="Default" text="Delete" press="deleteRecord"/> -->
+							<Button type="Emphasized" text="Edit" press="popUp"/>
 							<SearchField   class="transparentTable"
 							placeholder="Search Keyword" 
 							search="searchData"
@@ -60,13 +63,13 @@
 
 						<tab:Column >
 						<tab:label><Label text="Name"></Label></tab:label>
-						<tab:template><Link href="{File>Link}" target="_blank" text="{File>Name}"></Link></tab:template>
+						<tab:template><Link href="{File>link}" target="_blank" text="{File>name}"></Link></tab:template>
 						</tab:Column>
 
 
                         <tab:Column >
 						<tab:label><Label text="Description"></Label></tab:label>
-						<tab:template><Label text="{File>Description}"></Label></tab:template>
+						<tab:template><Label text="{File>description}"></Label></tab:template>
 						</tab:Column>
 
 						<!-- <tab:Column >

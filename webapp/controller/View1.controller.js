@@ -87,7 +87,8 @@ sap.ui.define([
 				//debugger
 				var key  =oEvent.getSource().oParent.mProperties.text;
 				var filter=oEvent.getSource().mProperties.subheader;
-				this.oRouter =  sap.ui.core.UIComponent.getRouterFor(this);
+				this.oRouter =sap.ui.core.UIComponent.getRouterFor(this)
+				;
 				this.oRouter.navTo("RouteView2",{
 					Id:key,
 					filter:filter
@@ -134,12 +135,12 @@ else{
 			
 			
 				var payload={
-					Name : fileName ,
-					Description :description ,
-					Category : category,
-					Type:type,
-					Link :link,
-					Password : password
+					name : fileName ,
+					description :description ,
+					category : category,
+					type:type,
+					link :link,
+					password : password
 					}
 		      	this.getView().setBusy(true);
 				this.createDataObject(payload)
@@ -166,11 +167,11 @@ else{
 				var serviceurl="/sap/opu/odata/sap/ZSIGNIWISWIKIPEDIA_SRV/";
 
              var oModel =  new sap.ui.model.odata.ODataModel(serviceurl);
-				oModel.create("/Z_C_SIGNIWISWIKI",payload,{
+				oModel.create("/z_c_signiwiswiki",payload,{
 					method:"POST",
 					success:function(oResponse){
-						//debugger
-					//	console.log(oResponse);
+						debugger
+						console.log(oResponse);
 						sap.m.MessageToast.show("Successfully Created");
 						that.setCategoryModel();
 						that.onCloseFrag();	
@@ -201,21 +202,22 @@ else{
             },
 
 			setCategoryModel:function(){
+				debugger
 				var that=this;
 				//var oModel=this.getOwnerComponent().getModel();
 				var serviceurl="/sap/opu/odata/sap/ZSIGNIWISWIKIPEDIA_SRV/";
 
              var oModel =  new sap.ui.model.odata.ODataModel(serviceurl);
-				oModel.read("/categorySet",{
+				oModel.read("/CATEGORYSet",{
 					success:function(oData){
-						//debugger
+						debugger
 						console.log(oData.results);
 				that.getOwnerComponent().setModel(new JSONModel({Categories:oData.results}),"categories")
 				
 				that.addTiles();	
 			},
 					error:function(error){
-						//debugger;
+						debugger;
 					//	console.log(error);
 						
 	

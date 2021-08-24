@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+ xmlns="sap.m" xmlns:sf="sap.ui.layout.form" xmlns:ui="sap.ui.unified" 
+ xmlns:core="sap.ui.core">
+<Dialog title="Edit a File" busy="{validation>/busyIndicator}" >
+<ToolbarSpacer ></ToolbarSpacer>
+  
+<sf:SimpleForm editable="true"  >
+				<Label text="FileName"></Label>
+				<Input value="{edit>/name}" valueStateText="{validation>/fileNameText}"
+				 liveChange="inputValidation" valueState="{validation>/fileName}"
+				  required="true"></Input>
+
+                <Label text="Link"></Label>
+				<Input value="{edit>/link}" liveChange="inputValidation"
+				 valueStateText="{validation>/linkText}"
+				 valueState="{validation>/link}" required="true"></Input>
+
+                <Label text="Category"></Label>
+                <Input value="{edit>/category}" liveChange="inputValidation"
+				 valueStateText="{validation>/linkText}" editable="false"
+				 valueState="{validation>/category}" required="true"></Input>
+					
+
+
+			 <Label text="Type"></Label>
+				<Input value="{edit>/type}" liveChange="inputValidation" editable="false"
+				 valueStateText="{validation>/linkText}"
+				 valueState="{validation>/Type}" required="true"></Input>	
+			
+
+                <Label text="Description"></Label>
+				<Input value="{edit>/description}" valueStateText="{validation>/descriptionText}"
+				 valueState="{validation>/description}" liveChange="inputValidation" required="true"></Input>
+
+                <Label text="Passowrd"></Label>
+				<Input required="true" valueStateText="{validation>/passwordText}"
+				 valueState="{validation>/password}" liveChange="inputValidation"
+				 value="{edit>/password}" type="Password"></Input>
+				<Label ></Label>
+			<Button text="Update" type="Emphasized" press="editRecord"></Button>
+             <Button text="Delete" type="Reject" press="deleteRecord"></Button>
+			</sf:SimpleForm>
+			<!-- <beginButton>
+			
+			</beginButton> -->
+			<endButton>
+              
+			<!-- icon="sap-icon://decline" -->
+			<Button text="close"  type="Reject" 
+			 press="onCloseFrag"></Button>
+			</endButton>
+           
+	  </Dialog> 
+</core:FragmentDefinition>

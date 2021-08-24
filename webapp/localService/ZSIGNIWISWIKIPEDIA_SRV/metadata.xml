@@ -1,38 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="http://183.82.98.9:8057/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
-    </edmx:Reference>
-    <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="ZSIGNIWISWIKIPEDIA_SRV" xml:lang="ar" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="category" sap:content-version="1">
-                <Key>
-                    <PropertyRef Name="Category"/>
-                </Key>
-                <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-            </EntityType>
-            <EntityType Name="Z_C_SIGNIWISWIKIType" sap:content-version="1">
-                <Key>
-                    <PropertyRef Name="Guid"/>
-                </Key>
-                <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:display-format="UpperCase" sap:label="GUID 16" sap:quickinfo="GUID im 'CHAR' Format in Großschreibung"/>
-                <Property Name="Name" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label=""/>
-                <Property Name="Description" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label=""/>
-                <Property Name="Category" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
-                <Property Name="Link" Type="Edm.String"/>
-                <Property Name="Password" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase"/>
-                <Property Name="Type" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
-            </EntityType>
-            <EntityContainer Name="ZSIGNIWISWIKIPEDIA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="categorySet" EntityType="ZSIGNIWISWIKIPEDIA_SRV.category" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="Z_C_SIGNIWISWIKI" EntityType="ZSIGNIWISWIKIPEDIA_SRV.Z_C_SIGNIWISWIKIType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-                <FunctionImport Name="categoryCheck" ReturnType="ZSIGNIWISWIKIPEDIA_SRV.category" EntitySet="categorySet" m:HttpMethod="GET">
-                    <Parameter Name="Category" Type="Edm.String" Mode="In"/>
-                    <Parameter Name="Password" Type="Edm.String" Mode="In"/>
-                </FunctionImport>
-            </EntityContainer>
-            <atom:link rel="self" href="http://183.82.98.9:8057/sap/opu/odata/SAP/ZSIGNIWISWIKIPEDIA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="http://183.82.98.9:8057/sap/opu/odata/SAP/ZSIGNIWISWIKIPEDIA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-        </Schema>
-    </edmx:DataServices>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="http://ecchana.sapdemo.com:8057/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+</edmx:Reference>
+<edmx:DataServices m:DataServiceVersion="2.0">
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZSIGNIWISWIKIPEDIA_SRV" xml:lang="en" sap:schema-version="1">
+<EntityType Name="CATEGORY" sap:content-version="1">
+<Key>
+<PropertyRef Name="Category"/>
+</Key>
+<Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="30 Characters" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+</EntityType>
+<EntityType Name="z_c_signiwiswikiType" sap:label="check for the password" sap:content-version="1">
+<Key>
+<PropertyRef Name="guid"/>
+</Key>
+<Property Name="guid" Type="Edm.String" Nullable="false" MaxLength="32" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Character field, length 32"/>
+<Property Name="name" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="" sap:quickinfo="30 Characters"/>
+<Property Name="description" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Character 100"/>
+<Property Name="category" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="" sap:quickinfo="30 Characters"/>
+<Property Name="type" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="" sap:quickinfo="30 Characters"/>
+<Property Name="link" Type="Edm.String"/>
+<Property Name="password" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Character Field Length = 10"/>
+</EntityType>
+<EntityContainer Name="ZSIGNIWISWIKIPEDIA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+<EntitySet Name="CATEGORYSet" EntityType="ZSIGNIWISWIKIPEDIA_SRV.CATEGORY" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+<EntitySet Name="z_c_signiwiswiki" EntityType="ZSIGNIWISWIKIPEDIA_SRV.z_c_signiwiswikiType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+</EntityContainer>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://ecchana.sapdemo.com:8057/sap/opu/odata/SAP/ZSIGNIWISWIKIPEDIA_SRV/$metadata"/>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://ecchana.sapdemo.com:8057/sap/opu/odata/SAP/ZSIGNIWISWIKIPEDIA_SRV/$metadata"/>
+</Schema>
+</edmx:DataServices>
 </edmx:Edmx>
